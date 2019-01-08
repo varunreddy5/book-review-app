@@ -1,2 +1,6 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<%= link_to("<< Back to Books", books_path) %>
+<h2><%= @book.title %></h2>
+<h3><%= @book.author %></h3>
+<p><%= @book.description %></p>
+<%= link_to("Edit Book", edit_book_path) %>
+<%= link_to("Delete Book", book_path(@book), method: :delete, data: {confirm: "Are you sure ?"}) %>
