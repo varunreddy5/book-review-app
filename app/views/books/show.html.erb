@@ -1,8 +1,14 @@
-<%= link_to("<< Back to Books", books_path) %>
-<h2><%= @book.title %></h2>
-<h3><%= @book.author %></h3>
-<h4>Category: <%= @book.category.name %></h4>
-<p><%= @book.description %></p>
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag(@book.book_img.url(:book_show), :class => "book-show") %>
+  </div>
+  <div class="col-md-8">
+    <h2><%= @book.title %></h2>
+    <h2><%= @book.author %></h2>
+    <p><%= @book.description %></p>
+  </div>
+</div>
+<%= link_to("Back", books_path) %>
 <% if current_user.id == @book.user_id %>
   <%= link_to("Edit Book", edit_book_path) %>
   <%= link_to("Delete Book", book_path(@book), method: :delete, data: {confirm: "Are you sure ?"}) %>
