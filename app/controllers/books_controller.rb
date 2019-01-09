@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   def new
     @book = current_user.books.build
+    @categories = Category.all.map{|c|[c.name, c.id]}
   end
 
   def create
@@ -13,7 +14,12 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.order("created_at DESC")
+    if params[:category].blank?
+      @books = Book.order("created_at DESC")
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      @books = Book.where(:category_id => @category_id).order("created_at DESC")
+    end
   end
 
   def show
@@ -27,6 +33,7 @@ class BooksController < ApplicationController
   def edit
     if user_signed_in?
       @book = Book.find(params[:id])
+      @categories = Category.all.map{|c|[c.name, c.id]}
     else
       redirect_to(new_user_registration_path)
     end
@@ -66,7 +73,7 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :description, :author)
+    params.require(:book).permit(:title, :description, :author, :category_id)
   end
 
 end

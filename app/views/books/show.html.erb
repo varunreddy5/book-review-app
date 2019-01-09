@@ -1,6 +1,7 @@
 <%= link_to("<< Back to Books", books_path) %>
 <h2><%= @book.title %></h2>
 <h3><%= @book.author %></h3>
+<h4>Category: <%= @book.category.name %></h4>
 <p><%= @book.description %></p>
 <% if current_user.id == @book.user_id %>
   <%= link_to("Edit Book", edit_book_path) %>
