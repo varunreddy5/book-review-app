@@ -24,6 +24,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'simple_form', '~> 4.1.0' #added by Varun
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6' #added by Varun
+gem 'devise', '~> 4.5' #added by Varun
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

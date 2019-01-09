@@ -1,10 +1,10 @@
 class BooksController < ApplicationController
   def new
-    @book = Book.new
+    @book = current_user.books.build
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = current_user.books.build(book_params)
     if @book.save
       redirect_to(books_path)
     else
@@ -17,34 +17,56 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
+    if user_signed_in?
+      @book = Book.find(params[:id])
+    else
+      redirect_to(new_user_registration_path)
+    end
   end
 
   def edit
-    @book = Book.find(params[:id])
+    if user_signed_in?
+      @book = Book.find(params[:id])
+    else
+      redirect_to(new_user_registration_path)
+    end
   end
 
   def update
-    @book = Book.find(params[:id])
-    if @book.update_attributes(book_params)
-      redirect_to(book_path)
+    if user_signed_in?
+      @book = Book.find(params[:id])
+      if @book.update_attributes(book_params)
+        redirect_to(book_path)
+      else
+        render('edit')
+      end
     else
-      render('edit')
+      redirect_to(new_user_registration_path)
     end
   end
 
   def delete
-    @book = Book.find(params[:id])
+    if user_signed_in?
+      @book = Book.find(params[:id])
+    else
+      redirect_to(new_user_registration_path)
+    end
   end
 
   def destroy
-    @book = Book.find(params[:id])
-    @book.destroy
-    redirect_to(books_path)
+    if user_signed_in?
+      @book = Book.find(params[:id])
+      @book.destroy
+      redirect_to(books_path)
+    else
+      redirect_to(new_user_registration_path)
+    end
+
   end
 
   private
   def book_params
     params.require(:book).permit(:title, :description, :author)
   end
+
 end
