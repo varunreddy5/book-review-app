@@ -18,8 +18,8 @@
 <div class="links btn-group">
   <%= link_to("Back", books_path, class: "btn btn-custom") %>
   <% if user_signed_in? %>
+    <%= link_to("Add Review", new_book_review_path(@book), class: "btn btn-custom") %>
     <% if current_user.id == @book.user_id %>
-      <%= link_to("Add Review", new_book_review_path(@book), class: "btn btn-custom") %>
       <%= link_to("Edit Book", edit_book_path, class: "btn btn-custom") %>
       <%= link_to("Delete Book", book_path(@book), class: "btn btn-custom", method: :delete, data: {confirm: "Are you sure ?"}) %>
     <% end %>
@@ -31,7 +31,7 @@
     <div class="reviews">
       <h1>Reviews</h1>
       <% if @book.reviews.empty? %>
-        <h4>No reviews yet! Be the first one to review it.</h4>
+        <h4>No reviews yet!</h4>
       <% else %>
         <%= render @book.reviews %>
       <% end %>

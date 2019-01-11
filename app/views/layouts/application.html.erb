@@ -44,9 +44,18 @@
   </nav>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <div class="container">
+      <% if notice %>
+        <div class="row">
+            <div class="notice alert alert-success text-center"><%= notice %></div>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="row">
+            <div class="alert alert-danger text-center"><%= alert %></div>
+        </div>
+      <% end %>
+
       <%= yield %>
     </div>
 
