@@ -1,7 +1,11 @@
 class BooksController < ApplicationController
   def new
-    @book = current_user.books.build
-    @categories = Category.all.map{|c|[c.name, c.id]}
+    if user_signed_in?
+      @book = current_user.books.build
+      @categories = Category.all.map{|c|[c.name, c.id]}
+    else
+      redirect_to(new_user_registration_path)
+    end
   end
 
   def create
@@ -23,11 +27,12 @@ class BooksController < ApplicationController
   end
 
   def show
-    if user_signed_in?
       @book = Book.find(params[:id])
-    else
-      redirect_to(new_user_registration_path)
-    end
+      if @book.reviews.blank?
+        @average_review = 0
+      else
+        @average_review = @book.reviews.average(:rating).round(2)
+      end
   end
 
   def edit
@@ -40,6 +45,7 @@ class BooksController < ApplicationController
   end
 
   def update
+
     if user_signed_in?
       @book = Book.find(params[:id])
       if @book.update_attributes(book_params)

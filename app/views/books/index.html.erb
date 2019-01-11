@@ -5,7 +5,7 @@
   <div class="row">
       <% @books.each do |book| %>
         <div class="col-md-3">
-          <%= link_to image_tag(book.book_img.url(:book_index)), book_path(book) %>
+          <%= link_to image_tag(book.book_img.url(:book_index), :class => "book"), book_path(book) %>
         </div>
       <% end %>
   </div>
