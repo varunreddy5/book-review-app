@@ -4,4 +4,6 @@ A Book Review Application where the logged in user can add new books to the cata
 
 * Includes User Authentication
 
-* Implemented using Ruby on Rails, Bootstrap and JavaScript.
+* Includes book categories where the user can filter the books based on Genres
+
+* Implemented using Ruby on Rails, Bootstrap and JavaScript
