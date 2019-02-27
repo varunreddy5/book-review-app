@@ -1,24 +1,9 @@
-# README
+# Book Review Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Book Review Application where the logged in user can add new books to the catalogue, also the users can add reviews to the books, edit them and if required can delete them.
 
-Things you may want to cover:
+* Includes User Authentication
 
-* Ruby version
+* Includes book categories where the user can filter the books based on Genres
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Implemented using Ruby on Rails, Bootstrap and JavaScript
