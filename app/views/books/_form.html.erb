@@ -1,6 +1,6 @@
 <%= simple_form_for @book, :html => { :multipart => true } do |f| %>
   <%= f.input :category_id, collection: @categories, prompt: "Select a Category" %>
-  <%= f.file_field :book_img %>
+  <%= f.file_field :avatar %>
   <%= f.input :title, label: "Book Title" %>
   <%= f.input :description %>
   <%= f.input :author %>
