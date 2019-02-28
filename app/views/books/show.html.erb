@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-4">
     <% if @book.avatar.url %>
-      <%= link_to image_tag(@book.avatar.url, class: "book_show"), book_path(@book) %>
+      <%= link_to image_tag(@book.avatar.url, class: "book_show img-responsive"), book_path(@book) %>
     <% else %>
       <%= link_to image_tag('/assets/default.jpg'), book_path(@book) %>
     <% end %>
