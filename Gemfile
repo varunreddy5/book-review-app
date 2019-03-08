@@ -30,6 +30,8 @@ gem 'paperclip', '~> 6.1' #added by Varun
 gem 'rails_12factor', group: :production
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem 'mini_magick', '~> 4.9', '>= 4.9.3'
+gem "fog-aws"
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
