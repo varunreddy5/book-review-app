@@ -12,7 +12,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-/config/application.yml
+
 
 # Ignore uploaded files in development
 /storage/*
@@ -26,3 +26,4 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/application.yml
